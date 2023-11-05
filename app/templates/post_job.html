@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobSage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM Sans:wght@400;500&display=swap"
+    />
+    <style>
+        /* Custom CSS */
+        body {
+          
+            font-family: Outfit;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+        }
+        
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #0fbf1e;
+        }
+
+        .nav-link {
+            color: #000;
+        }
+
+        .form-container {
+            background-color: #0fbf1e;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .form-label {
+            color: #000;
+        }
+        h1{
+          color: #000
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index1') }}">JobSage</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('render_post_job_form') }}">Post a Job</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('compare') }}">Compare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('find_job_form') }}">Find a Job</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    {% if success %}
+        <script>
+            alert('Job posted successfully');
+        </script>
+    {% endif %}
+    <!--  
+    <center>
+    <div class="container">
+        <h1>Post a Job</h1>
+        <form action="{{ url_for('post_job_process') }}" method="POST">
+            <div class="form-group">
+                <label for="job_Title">Job Title:</label>
+                <input type="text" class="form-control" id="job_Title" name="job_Title" required>
+            </div>
+            <div class="form-group">
+                <label for="comp_name">Company Name:</label>
+                <input type="text" class="form-control" id="comp_name" name="comp_name" required>
+            </div>
+            <div class="form-group">
+                <label for="Job_desc">Job Description:</label>
+                <textarea class="form-control" id="Job_desc" name="Job_desc" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary:</label>
+                <input type="number" class="form-control" id="salary" name="salary" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" class="form-control" id="city" name="city">
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" name="address">
+            </div>
+            <div class="form-group">
+                <label for="linkedin_company_url">LinkedIn Company URL:</label>
+                <input type="text" class="form-control" id="linkedin_company_url" name="linkedin_company_url">
+            </div>
+            <button type="submit" class="btn btn-primary" style="background-color: #0fbf1e;">Post Job</button>
+        </form>
+    </div>
+</center>
+-->
+<div class="container my-5">
+    <div class="row">
+        <div class="col text-center">
+            <h1>Post a Job</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="form-container" action="{{ url_for('post_job_process') }}" method="POST">
+                <div class="mb-3">
+                    <label for="validationDefault01" class="form-label">Job Title</label>
+                    <input type="text" class="form-control" id="validationDefault01" name="job_Title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="validationDefault02" class="form-label">Company</label>
+                    <input type="text" class="form-control" id="validationDefault02" name="comp_name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="validationDefault02" class="form-label">Job Description</label>
+                    <input type="text" class="form-control" id="validationDefault02" name="Job_desc" required>
+                </div>
+                <div class="mb-3">
+                    <label for="validationDefaultUsername" class="form-label">Salary</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="inputGroupPrepend2">LPA</span>
+                        <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2"
+                            name="salary" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="inputAddress" class="form-label">City</label>
+                    <input type="text" class="form-control" name="city" id="inputAddress" placeholder="Mumbai">
+                </div>
+                <div class="mb-3">
+                    <label for="inputAddress" class="form-label">Address</label>
+                    <input type="text" class="form-control" name="address" id="inputAddress" placeholder="Mumbai">
+                </div>
+                <div class="mb-3">
+                    <label for="inputAddress" class="form-label">Linkedin Company URL></label>
+                    <input type="text" class="form-control" name="linkedin_company_url" id="inputAddress" placeholder="Mumbai">
+                </div>
+            
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success job-link">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <!-- Include any necessary JavaScript libraries or scripts here -->
+</body>
+</html>

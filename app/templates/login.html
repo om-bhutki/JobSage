@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        /* Import the Outfit font from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Outfit', sans-serif; /* Use the Outfit font for the entire page */
+        }
+        .card {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            width: 300px; /* Adjust the card width as needed */
+        }
+        .card h1 {
+            text-align: center;
+        }
+        .card form {
+            text-align: center;
+        }
+        .card label {
+            display: block;
+            margin: 5px 0;
+        }
+        .card input[type="text"],
+        .card input[type="password"] {
+            width: 100%;
+            padding: 8px; /* Reduce padding */
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .card input[type="submit"] {
+            background-color: #45a049; /* Darker green */
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .card p {
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+            <br>
+            <input type="submit" value="Login">
+        </form>
+        <p>Don't have an account? <a href="/register_page">Register</a></p>
+    </div>
+</body>
+</html>

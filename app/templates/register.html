@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        /* Import the Outfit font from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Outfit', sans-serif; /* Use the Outfit font for the entire page */
+        }
+        .registration-card {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 60px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+        .registration-card h1 {
+            text-align: center;
+        }
+        .registration-card form {
+            text-align: center;
+        }
+        .registration-card label {
+            display: block;
+            margin: 5px 0;
+        }
+        .registration-card input[type="text"],
+        .registration-card input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .registration-card input[type="submit"] {
+            background-color: #45a049; /* Darker green */
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .registration-card p {
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-card">
+        <h1>Register</h1>
+        <form action="/register" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+            <br>
+            <label for "password">Password:</label>
+            <input type="password" name="password" required>
+            <br>
+            <input type="submit" value="Register">
+        </form>
+        <p>Already have an account? <a href="/login_page">Login</a></p>
+    </div>
+</body>
+</html>

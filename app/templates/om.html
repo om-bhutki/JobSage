@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Website</title>
+<style>
+table {
+border-collapse: collapse;
+width: 100%;
+}
+th, td {
+border: 1px solid #dddddd;
+text-align: left;
+padding: 8px;
+}
+th {
+background-color: #f2f2f2;
+}
+tr:nth-child(even) {
+background-color: #f2f2f2;
+}
+a {
+text-decoration: none;
+}
+</style>
+</head>
+<body>
+<table id="job-table">
+<thead>
+<tr>
+<th>Employer Name</th>
+<th>Job Title</th>
+<th>Location</th>
+<th>Publisher</th>
+<th>Job Type</th>
+<th>Apply Link</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<script>
+const url =
+'https://jsearch.p.rapidapi.com/search?query=Python%20developer%20in%20Mumbai%2C%20India&page=1&num_pages=1';
+const options = {
+method: 'GET',
+headers: {
+'X-RapidAPI-Key':
+'cd8ab388b9mshae264f8b24d4c13p1d991ejsn9d8db93fec8b',
+'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
+}
+};
+async function fetchData() {
+try {
+const response = await fetch(url, options);
+const data = await response.json();
+const jobData = data.data;
+const table =
+document.getElementById('job-table').getElementsByTagName('tbody')[0];
+// Iterating through the job data and create table rows
+jobData.forEach(job => {
+const row = table.insertRow(table.rows.length);
+const employerNameCell = row.insertCell(0);
+const jobTitleCell = row.insertCell(1);
+const locationCell = row.insertCell(2);
+const employerWebsiteCell = row.insertCell(3);
+const jobTypeCell = row.insertCell(4);
+const applyLinkCell = row.insertCell(5);
+employerNameCell.innerHTML = job.employer_name ||
+'N/A';
+jobTitleCell.innerHTML = job.job_title || 'N/A';
+locationCell.innerHTML = `${job.job_city},
+${job.job_state}, ${job.job_country}` || 'N/A';
+employerWebsiteCell.innerHTML = job.job_publisher
+|| 'N/A';
+jobTypeCell.innerHTML = job.job_employment_type ||
+'N/A';
+applyLinkCell.innerHTML = `<a href="${job.job_apply_link}" target="_blank">Apply</a>` || 'N/A';});
+} catch (error) {
+console.error(error);
+}
+}
+fetchData(); // Call the function to initiate the request
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--h1);
+    list-style: none;
+    text-decoration: none;
+
+}
+.card-body h5{
+  color: #0fbf1e;
+}
+
+#logo{
+  font-weight: 700;
+  color: #0fbf1e;
+}
+
+#menu-icon{
+  color: black;
+  font-size: 30px;
+  z-index: 10001;
+  cursor: pointer;
+}
+.hero{
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  margin-top: -60px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  align-items: center;
+  gap: 2rem;
+}
+.hero-img{
+  width: 100px;
+  height: 300px;
+}
+.hero-text p{
+  font-size: 18px;
+  font-weight: 400;
+  color: black;
+  margin-bottom: 40px;
+}
+
+.hero-text h1{
+  font-family: var(--h1);
+  font-size: 35px;
+  color: var(--color-forestgreen);
+  margin: 0 0 20px;
+}
+
+section{
+  padding: 0 19%;
+}
+#green-btn{
+  
+  background: var(--color-forestgreen);
+  text-decoration: none;
+}
+#white-btn{
+  
+  background: white;
+  border: 1px solid black;
+  text-decoration: none;
+}
+.hero-text a{
+  display: inline-block;
+  
+  color: black;
+  padding: 12px 30px;
+  border-radius: 12px;
+
+
+}
+.custom-card {
+    background-color: #0fbf1e;
+}
+.custom-button {
+    background-color: #0fbf1e;
+    color: #fff;
+}

@@ -1,0 +1,236 @@
+<!-- displayjobs.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+       
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+  
+        table, th, td {
+          border: 1px solid red;
+        }
+  
+        /* Styling for the Description column to limit width */
+        td.description {
+          max-width: 200px; /* Set an appropriate max-width for your layout */
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      </style>
+  </head>
+  <body>
+
+    
+
+
+    <!-- Table to Display Records -->
+    <table border="1" style="table-layout: auto;">
+      <thead>
+        <tr>
+          <th>Job ID</th>
+          <th>Job Title</th>
+          <th>Company</th>
+          <th>Description</th>
+          <th>Salary</th>
+          <th>City</th>  
+          <th>Address</th>  
+          <th>LinkedIn Company URL</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for job in jobs %}
+        <tr>
+          <td>{{ job.job_id }}</td>
+          <td>{{ job.job_Title }}</td>
+          <td>{{ job.comp_name }}</td>
+          <td>{{ job.Job_desc }}</td>
+          <td>{{ job.salary }}</td>
+          <td>{{ job.city }}</td>  
+          <td>{{ job.address }}</td>  
+          <td>{{ job.linkedin_company_url }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-success"
+              data-toggle="modal"
+              data-target="#update_job_{{job.job_id}}"
+            >
+              Update
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-toggle="modal"
+              data-target="#delete_job_{{job.job_id}}"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        <!-- Update Modal -->
+        <div
+          class="modal fade"
+          id="update_job_{{job.job_id}}"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="updateJobModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="updateJobModalLabel">Update Job</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form action="{{ url_for('update_job', job_id=job.job_id) }}" method="POST">
+                <div class="modal-body">
+                  <input type="hidden" name="job_id" value="{{ job.job_id }}">
+                  <label for="jobTitle">Job Title</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="jobTitle"
+                    name="job_Title"
+                    value="{{ job.job_Title }}"
+                  />
+                  <label for="company">Company</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="company"
+                    name="comp_name"
+                    value="{{ job.comp_name }}"
+                  />
+                  <label for="description">Description</label>
+                  <textarea
+                    class="form-control"
+                    id="description"
+                    name="Job_desc"
+                  >{{ job.Job_desc }}</textarea>
+                  <label for="salary">Salary</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="salary"
+                    name="salary"
+                    value="{{ job.salary }}"
+                  />
+                  <label for="city">City</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="city"
+                    name="city"
+                    value="{{ job.city }}"
+                  />
+                  <label for="address">Address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="address"
+                    name="address"
+                    value="{{ job.address }}"
+                  />
+                  <label for="linkedinCompanyURL">LinkedIn Company URL</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="linkedinCompanyURL"
+                    name="linkedin_company_url"
+                    value="{{ job.linkedin_company_url }}"
+                  />
+                </div>
+
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Delete Modal -->
+        <div
+          class="modal fade"
+          id="delete_job_{{job.job_id}}"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="deleteJobModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteJobModalLabel">Delete Job</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure you want to delete this job?</p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <form action="{{ url_for('delete_job', job_id=job.job_id) }}" method="POST">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <script>
+      const modal = document.getElementById("addJobModal");
+      const addButton = document.querySelector("button[data-target='#addJobModal']");
+      const closeButton = document.querySelector(".close");
+
+      addButton.addEventListener("click", () => {
+          modal.style.display = "block";
+      });
+
+      closeButton.addEventListener("click", () => {
+          modal.style.display = "none";
+      });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

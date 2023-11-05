@@ -1,0 +1,93 @@
+/* Reset some default styles */
+body, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    /*font-family: 'Outfit', sans-serif;*/
+}
+
+/* Style the header and navbar */
+header {
+    background-color: #fff; /* Make navbar white */
+    text-align: center;
+    padding: 10px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.company-name {
+    color: #4CAF50;
+    font-size: 24px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* Style the main content */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.content-left {
+    flex: 1;
+    text-align: left; /* Align the text to the left */
+}
+
+.headline {
+    font-size: 48px; /* Increase the font size */
+    font-weight: bold;
+}
+
+.subheadline {
+    font-size: 24px; /* Increase the font size */
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 25px;
+    margin: 10px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s; /* Add a transition for the hover effect */
+}
+
+/* Hover effect for buttons */
+.btn.green:hover {
+    color: #4CAF50;
+    background-color: #fff;
+}
+
+.btn.white:hover {
+    color: #fff;
+    background-color: #4CAF50;
+}
+
+.content-right img {
+    width: 300px; /* Make the image larger */
+    height: auto; /* Automatically adjust the height to maintain aspect ratio */
+}
