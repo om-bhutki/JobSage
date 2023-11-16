@@ -56,6 +56,7 @@ section{
 #green-btn{
   
   background: var(--color-forestgreen);
+  color: white;
   text-decoration: none;
 }
 #white-btn{
@@ -63,13 +64,16 @@ section{
   background: white;
   border: 1px solid black;
   text-decoration: none;
+  color: black;
 }
-.hero-text a{
+a{
   display: inline-block;
   
   color: black;
   padding: 12px 30px;
   border-radius: 12px;
+  text-decoration: none;
+  
 
 
 }

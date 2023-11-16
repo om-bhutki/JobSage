@@ -9,8 +9,7 @@ from functools import wraps
 
 app = create_app()
 
-with app.app_context():
-    db.create_all()
+
 
 @app.route("/")
 def index():
@@ -257,7 +256,7 @@ def update_job(job_id):
     job.linkedin_company_url=request.form.get('linkedin_company_url', job.linkedin_company_url)
     db.session.commit()
     return redirect(url_for('displayjobs'))
-    #return jsonify(job.to_json())
+    # return jsonify(job.to_json())
 
 
 @app.route('/latest_jobs')
@@ -294,6 +293,12 @@ def compare():
     
         company_1 = request.form['company1'].lower()
         company_2 = request.form['company2'].lower()
+
+        if " " in company_1:
+            company_1 = company_1.replace(" ","-")
+        if " " in company_2:
+            company_2 = company_2.replace(" ","-")
+        print(f"{company_1} {company_2}")    
         
         headers = {
         "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36",
