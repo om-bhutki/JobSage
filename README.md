@@ -21,7 +21,7 @@ The Job Recommendation System is a web-based platform that utilizes web scraping
 - **Programming Languages**: Python
 - **Frameworks and Libraries**: Flask (Python web framework), Bootstrap (front-end framework)
 - **Web Scraping**: Beautiful Soup
-- **APIs**: JSearch on rapidAPIS
+- **APIs**: JSearch on rapidAPI
 - **Database**: sqlite
 
 ## How to Use
@@ -33,7 +33,7 @@ The Job Recommendation System is a web-based platform that utilizes web scraping
 
 2. **Running the Application**
     - Navigate to the project directory.
-    - Run `python main.py` to start the Flask server.
+    - Run `python flask_app.py` to start the Flask server.
     - Access the application at `http://localhost:5000` in your web browser.
 
 3. **Usage**
@@ -48,11 +48,3 @@ We welcome contributions to improve the system. If you'd like to contribute, ple
 - Commit your changes: `git commit -m 'Add a new feature'`
 - Push to the branch: `git push origin feature-name`
 - Open a pull request.
-
-## Contributors
-
-- List of contributors and their respective contributions.
-
-## License
-
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
